@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Coding Club – Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Coding Club</h1>
+    <nav>
+      <a href="index.html">Home</a> |
+      <a href="about.html">About</a> |
+      <a href="schedule.html">Schedule</a> |
+      <a href="projects.html">Projects</a>
+    </nav>
+    <button id="theme-toggle" aria-pressed="false" class="theme-toggle">
+      🌙 Dark mode
+    </button>
+  </header>
+
+  <main>
+    <section class="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">Featured Projects</h2>
+      <p>Below are recent student creations that demonstrate what can be achieved after just a few weeks of learning.</p>
+      <div class="project-grid">
+        <article class="project-card">
+          <h3>Portfolio Site</h3>
+          <p>A responsive HTML + CSS + JS page for a fictional startup, including a navigation bar, hero section, and contact form.</p>
+        </article>
+        <article class="project-card">
+          <h3>Todo App</h3>
+          <p>A simple task‑manager with local storage, due‑date tags, and the ability to export data as JSON.</p>
+        </article>
+        <article class="project-card">
+          <h3>Weather Dashboard</h3>
+          <p>A front‑end app that fetches current weather data via a public API and displays temperature, humidity, and a 5‑day forecast.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

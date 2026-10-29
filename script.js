@@ -1,31 +1,26 @@
-/* ==========================================================
-   FitClub – theme switcher (dark ⇆ light)
-   ========================================================== */
+// Check OS preferences on page load and set initial theme
+const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
 
-(() => {
-  const toggle = document.getElementById('theme-toggle');
-  const html = document.documentElement;
+const html = document.documentElement;
+if (prefersLight) {
+  html.setAttribute('data-theme', 'light');
+} else {
+  // default to dark – no attribute needed if already dark
+}
 
-  // Determine initial theme from the OS preference
-  const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-  const initialTheme = prefersLight ? 'light' : 'dark';
+// Theme toggle (only if the button exists on the page)
+const toggle = document.getElementById('theme-toggle');
+if (toggle) {
+  // Set button label and aria‑pressed based on current theme
+  const isLight = html.getAttribute('data-theme') === 'light';
+  toggle.textContent = isLight ? '☀️ Light mode' : '🌙 Dark mode';
+  toggle.setAttribute('aria-pressed', !isLight);
 
-  // Set the data attribute and update button labeling
-  html.setAttribute('data-theme', initialTheme);
-  toggle.setAttribute('aria-pressed', !prefersLight); // true = dark mode active
-  toggle.textContent = prefersLight ? '🌙 Dark mode' : '☀️ Light mode';
-
-  // Toggle handler
-  const toggleTheme = () => {
-    const current = html.getAttribute('data-theme');
-    const newTheme = current === 'dark' ? 'light' : 'dark';
-    html.setAttribute('data-theme', newTheme);
-    toggle.setAttribute('aria-pressed', newTheme === 'dark');
-    toggle.textContent = newTheme === 'dark' ? '🌙 Dark mode' : '☀️ Light mode';
-  };
-
-  // Click event
-  toggle.addEventListener('click', toggleTheme);
-
-  // Also works with Enter/Space key (native for <button>)
-})();
+  // Toggle button
+  toggle.addEventListener('click', () => {
+    const isLight = html.getAttribute('data-theme') === 'light';
+    html.setAttribute('data-theme', isLight ? 'dark' : 'light');
+    toggle.textContent = isLight ? '🌙 Dark mode' : '☀️ Light mode';
+    toggle.setAttribute('aria-pressed', !isLight);
+  });
+}
